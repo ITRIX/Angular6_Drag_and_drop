@@ -1,0 +1,54 @@
+.app-nav-bar {
+    .app-user-icon {
+        height: 30px;
+        width: 30px;
+        color: #B1B6B6;
+        font-size: 22px;
+        line-height: 19px;
+    }
+    .persona-tess {
+        height: 24px;
+        width: 108px;
+        color: #3C4646;
+        font-family: "Source Sans Pro";
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 24px;
+    }
+
+    .pencil-square-icon {
+        height: 19px;
+        width: 16px;
+        color: #B1B6B6;
+        font-size: 14px;
+        line-height: 19px;
+        margin-left: 0.5rem;
+    }
+
+  height: 64px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F0F0 100%);
+  .app-nav-icons {
+    position: absolute;
+    right: 25px;
+    li {
+      padding: 1rem;
+    }
+    i {
+      height: 28px;
+      width: 36px;
+      color: #646E6E;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+    }
+    span {
+      height: 8px;
+      width: 68px;
+      color: #646E6E;
+      font-family: "Source Sans Pro";
+      font-size: 12px;
+      line-height: 8px;
+    }
+  }
+}
+

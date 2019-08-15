@@ -1,0 +1,240 @@
+<app-main-header></app-main-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 persona-edit-form-container">
+            <div class="row persona-name-srtname-container">
+                <div class="col-md-1 contentCls">
+                    <div class="user-icon-reactange">
+                        <i class="fas fa-user-tie fa-2x"></i>
+                    </div>
+                </div>
+                <div class="col-md-8 contentCls">
+                    <div class="simple-text-container">
+                        <div class="field-label" contenteditable="true">
+                            PERSONA NAME
+                            <span class="setting-icon" style="display:none;">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            Tess
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 contentCls">
+                    <div class="simple-text-container">
+                        <div class="field-label" contenteditable="true">
+                            SHORT NAME
+                            <span class="setting-icon" style="display:none;">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            Tes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row persona-edit-form2-container">
+                <div class="col-md-4">
+                    <div class="simple-image-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            IMAGE
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content-image" contenteditable="true">
+                            <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                    </div>
+
+                    <div class="simple-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            AGE
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            37
+                        </div>
+                    </div>
+
+                    <div class="simple-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            GENDER
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            Tess
+                        </div>
+                    </div>
+
+                    <div class="simple-image-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            MOOD IMAGES
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content-image" contenteditable="true">
+                            <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" class="img-thumbnail" alt="Cinque Terre">
+                            <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="simple-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            OCCUPATION
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            Researcher
+                        </div>
+                    </div>
+
+                    <div class="simple-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            NATIONALITY
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            French
+                        </div>
+                    </div>
+
+                    <div class="simple-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            MARITAL STATUS
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content" contenteditable="true">
+                            Married, 3 kids
+                        </div>
+                    </div>
+
+                    <div class="simple-rich-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            QUOTE
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content">
+                            <app-ngx-editor [config]="editorConfig" [(ngModel)]="htmlContent1"></app-ngx-editor>
+                        </div>
+                    </div>
+
+                    <div class="simple-rich-text-container contentMargin">
+                        <div class="field-label" contenteditable="true">
+                            DESCRIPTION
+                            <span class="setting-icon">
+                                <i class="fas fa-cog"></i>
+                            </span>
+                        </div>
+                        <div class="field-content">
+                            <app-ngx-editor [config]="editorConfig" [(ngModel)]="htmlContent2"></app-ngx-editor>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-md-3 add-element-to-persona-container">
+            <div class="row add-element-header">
+                <div class="col-md-10 add-element-header-item1">
+                    Add element
+                </div>
+                <div class="col-md-2 add-element-header-item2">
+                    <i class="fas fa-window-close"></i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 add-element-content-label">
+                    Add Element to Persosna
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 add-element-content-desc">
+                    Click or drag &amp; drop one of the element types below to add it to the persona.
+                    <br> Click on the
+                    <i class="fas fa-cog"></i> icon of each element to edit its settings.
+                    <br> You can reorder the elements by dragging them.
+                </div>
+            </div>
+
+            <div class="row drop-from-container">
+                <div class="col-md-6">
+                    <div class="drop-from-rect">
+                        <span class="item1">Abc</span>
+                        <br>
+                        <span class="item2">SHORT TEXT</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="drop-from-rect">
+                        <i class="fas fa-text-width fa-2x"></i>
+                        <br>
+                        <span class="item2">LONG TEXT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row drop-from-container">
+                <div class="col-md-6">
+                    <div class="drop-from-rect">
+                        <i class="fas fa-image fa-2x"></i>
+                        <br>
+                        <span class="item2">IMAGE</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="drop-from-rect">
+                        <i class="fas fa-images fa-2x"></i>
+                        <br>
+                        <span class="item2">IMAGE GALLERY</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row drop-from-container">
+                <div class="col-md-6">
+                    <div class="drop-from-rect">
+                        <span class="item1">123</span>
+                        <br>
+                        <span class="item2">NUMBER</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row contact-popup-container">
+                <div class="col-md-2 item1">
+                    <i class="fas fa-info-circle fa-2x"></i>
+                </div>
+                <div class="col-md-10 item2">
+                    <span>Missing something? </span>
+                    <p>Contact us to let us know which element types you would like to use in your personas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
