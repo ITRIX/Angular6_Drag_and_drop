@@ -39,7 +39,7 @@
         <div class="col-md-4" cdkDropList id="firstList" [cdkDropListData]="parsonaData.leftPanel" [cdkDropListConnectedTo]="'secondList'"
           (cdkDropListDropped)="onDrop($event)">
           <div *ngFor="let item of parsonaData.leftPanel; let i = index" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
-            <div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
+            <div class="drag-drop-placeholder" *cdkDragPlaceholder>Insert element here</div>
             <div class="simple-text-container contentMargin" *ngSwitchCase="'number'">
               <span class="setting-icon">
                 <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
@@ -93,7 +93,7 @@
         <div class="col-md-8" cdkDropList id="secondList" [cdkDropListData]="parsonaData.rightPanel" [cdkDropListConnectedTo]="'firstList'"
           (cdkDropListDropped)="onDrop($event)">
           <div *ngFor="let item of parsonaData.rightPanel let i = index" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
-            <div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
+            <div class="drag-drop-placeholder" *cdkDragPlaceholder>Insert element here</div>
             <div class="simple-text-container contentMargin" *ngSwitchCase="'number'">
               <span class="setting-icon">
                 <i class="fas fa-trash" (click)="deleteElement('rightPanel', i)"></i>
