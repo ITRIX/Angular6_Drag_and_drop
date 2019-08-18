@@ -9,39 +9,40 @@
           </div>
         </div>
         <div class="col-md-8 contentCls">
-          <div class="simple-text-container">
+          <div class="simple-text-container" [ngClass]="{'required-error': (parsonaData.parsonaName=='' && isparsonaNameDirty)}">
             <div class="field-label">
               PERSONA NAME
               <span class="setting-icon" style="display:none;">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash"></i>
               </span>
             </div>
-            <div class="field-content" contenteditable="true">
-              Tess
-            </div>
+            <div class="field-content" contenteditable="true" [textContent]="parsonaData.parsonaName" (input)="parsonaData.parsonaName=$event.target.textContent; parsonaData.parsonaInitials=parsonaData.parsonaName.substring(0, 3).toUpperCase();"
+              (blur)="parsonaNameEdited()"></div>
           </div>
         </div>
         <div class="col-md-3 contentCls">
-          <div class="simple-text-container">
+          <div class="simple-text-container" [ngClass]="{'required-error': (parsonaData.parsonaInitials=='' && isparsonaInitailsDirty)}">
             <div class="field-label">
               SHORT NAME
               <span class="setting-icon" style="display:none;">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash"></i>
               </span>
             </div>
-            <div class="field-content" contenteditable="true">
+            <div class="field-content" contenteditable="true" [textContent]="parsonaData.parsonaInitials" (input)="parsonaData.parsonaInitials=$event.target.textContent"
+              (blur)="parsonaInitailsEdited()">
               Tes
             </div>
           </div>
         </div>
       </div>
       <div class="row persona-edit-form2-container">
-        <div class="col-md-4" cdkDropList #firstList="cdkDropList" [cdkDropListData]="parsonaData.leftPanel" [cdkDropListConnectedTo]="secondList"
+        <div class="col-md-4" cdkDropList id="firstList" [cdkDropListData]="parsonaData.leftPanel" [cdkDropListConnectedTo]="'secondList'"
           (cdkDropListDropped)="onDrop($event)">
-          <div *ngFor="let item of parsonaData.leftPanel" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
+          <div *ngFor="let item of parsonaData.leftPanel; let i = index" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
+            <div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
             <div class="simple-text-container contentMargin" *ngSwitchCase="'number'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content" contenteditable="true" [textContent]="item.desc" (click)="isDragOn = true;" (blur)="item.desc=$event.target.textContent; contentChange()"></div>
@@ -49,7 +50,7 @@
 
             <div class="simple-image-container contentMargin" *ngSwitchCase="'image'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content-image">
@@ -59,7 +60,7 @@
 
             <div class="simple-text-container contentMargin" *ngSwitchCase="'simpletext'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content" contenteditable="true" [textContent]="item.desc" (click)="isDragOn = true;" (blur)="item.desc=$event.target.textContent; contentChange()"></div>
@@ -67,7 +68,7 @@
 
             <div class="simple-image-container contentMargin" *ngSwitchCase="'images'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content-image">
@@ -77,7 +78,7 @@
 
             <div class="simple-rich-text-container contentMargin" *ngSwitchCase="'richtext'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('leftPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content">
@@ -89,19 +90,20 @@
         </div>
 
 
-        <div class="col-md-8" cdkDropList #secondList="cdkDropList" [cdkDropListData]="parsonaData.rightPanel" [cdkDropListConnectedTo]="firstList"
+        <div class="col-md-8" cdkDropList id="secondList" [cdkDropListData]="parsonaData.rightPanel" [cdkDropListConnectedTo]="'firstList'"
           (cdkDropListDropped)="onDrop($event)">
-          <div *ngFor="let item of parsonaData.rightPanel" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
+          <div *ngFor="let item of parsonaData.rightPanel let i = index" [ngSwitch]="item.type" cdkDrag [cdkDragDisabled]="isDragOn">
+            <div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
             <div class="simple-text-container contentMargin" *ngSwitchCase="'number'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('rightPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content" contenteditable="true" [textContent]="item.desc" (click)="isDragOn = true;" (blur)="item.desc=$event.target.textContent; contentChange()"></div>
             </div>
             <div class="simple-image-container contentMargin" *ngSwitchCase="'image'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('rightPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content-image">
@@ -111,7 +113,7 @@
 
             <div class="simple-text-container contentMargin" *ngSwitchCase="'simpletext'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('rightPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content" contenteditable="true" [textContent]="item.desc" (click)="isDragOn = true;" (blur)="item.desc=$event.target.textContent; contentChange()"></div>
@@ -119,7 +121,7 @@
 
             <div class="simple-image-container contentMargin" *ngSwitchCase="'images'">
               <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-trash" (click)="deleteElement('rightPanel', i)"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content-image">
@@ -128,8 +130,8 @@
             </div>
 
             <div class="simple-rich-text-container contentMargin" *ngSwitchCase="'richtext'">
-              <span class="setting-icon">
-                <i class="fas fa-cog"></i>
+              <span class="setting-icon" (click)="deleteElement('rightPanel', i)">
+                <i class="fas fa-trash"></i>
               </span>
               <div class="field-label" contenteditable="true" [textContent]="item.label" (click)="isDragOn = true;" (blur)="item.label=$event.target.textContent; contentChange()"></div>
               <div class="field-content">
@@ -141,72 +143,6 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-3 add-element-to-persona-container">
-      <div class="row add-element-header">
-        <div class="col-md-10 add-element-header-item1">
-          Add element
-        </div>
-        <div class="col-md-2 add-element-header-item2">
-          <i class="fas fa-window-close"></i>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 add-element-content-label">
-          Add Element to Persosna
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 add-element-content-desc">
-          Click or drag &amp; drop one of the element types below to add it to the persona.
-          <br> Click on the
-          <i class="fas fa-cog"></i> icon of each element to edit its settings.
-          <br> You can reorder the elements by dragging them.
-        </div>
-      </div>
-
-      <div class="row drop-from-container" cdkDropList #thirdList="cdkDropList" [cdkDropListData]="addElementField" [cdkDropListConnectedTo]="[firstList,secondList]">
-        <div class="col-md-6" *ngFor="let element of addElementField" [ngSwitch]="element.type" cdkDrag>
-          <div class="drop-from-rect" *ngSwitchCase="'simpletext'">
-            <span class="item1">Abc</span>
-            <br>
-            <span class="item2">SHORT TEXT</span>
-          </div>
-          <div class="drop-from-rect" *ngSwitchCase="'richtext'">
-            <i class="fas fa-text-width fa-2x"></i>
-            <br>
-            <span class="item2">LONG TEXT</span>
-          </div>
-          <div class="drop-from-rect" *ngSwitchCase="'image'">
-            <i class="fas fa-image fa-2x"></i>
-            <br>
-            <span class="item2">IMAGE</span>
-          </div>
-          <div class="drop-from-rect" *ngSwitchCase="'images'">
-            <i class="fas fa-images fa-2x"></i>
-            <br>
-            <span class="item2">IMAGE GALLERY</span>
-          </div>
-          <div class="drop-from-rect" *ngSwitchCase="'number'">
-            <span class="item1">123</span>
-            <br>
-            <span class="item2">NUMBER</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row contact-popup-container">
-        <div class="col-md-2 item1">
-          <i class="fas fa-info-circle fa-2x"></i>
-        </div>
-        <div class="col-md-10 item2">
-          <span>Missing something? </span>
-          <p>Contact us to let us know which element types you would like to use in your personas.</p>
-        </div>
-      </div>
-
-    </div>
+    <app-sidebar></app-sidebar>
   </div>
 </div>

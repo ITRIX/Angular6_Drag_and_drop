@@ -9,11 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppMainHeaderComponent
+    AppMainHeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

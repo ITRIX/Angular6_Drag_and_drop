@@ -1,0 +1,67 @@
+<div class="col-md-3 add-element-to-persona-container">
+    <div class="row add-element-header">
+      <div class="col-md-10 add-element-header-item1">
+        Add element
+      </div>
+      <div class="col-md-2 add-element-header-item2">
+        <i class="fas fa-window-close"></i>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 add-element-content-label">
+        Add Element to Persosna
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 add-element-content-desc">
+        Click or drag &amp; drop one of the element types below to add it to the persona.
+        <br> Click on the
+        <i class="fas fa-trash"></i> icon of each element to edit its settings.
+        <br> You can reorder the elements by dragging them.
+      </div>
+    </div>
+
+    <div class="row drop-from-container" cdkDropList #thirdList="cdkDropList" [cdkDropListData]="addElementField" [cdkDropListConnectedTo]="['firstList','secondList']">
+      <div class="col-md-6" *ngFor="let element of addElementField" [ngSwitch]="element.type" cdkDrag>
+        <div class="drag-drop-placeholder" *cdkDragPlaceholder></div>
+        <div class="drop-from-rect" *ngSwitchCase="'simpletext'">
+          <span class="item1">Abc</span>
+          <br>
+          <span class="item2">SHORT TEXT</span>
+        </div>
+        <div class="drop-from-rect" *ngSwitchCase="'richtext'">
+          <i class="fas fa-text-width fa-2x"></i>
+          <br>
+          <span class="item2">LONG TEXT</span>
+        </div>
+        <div class="drop-from-rect" *ngSwitchCase="'image'">
+          <i class="fas fa-image fa-2x"></i>
+          <br>
+          <span class="item2">IMAGE</span>
+        </div>
+        <div class="drop-from-rect" *ngSwitchCase="'images'">
+          <i class="fas fa-images fa-2x"></i>
+          <br>
+          <span class="item2">IMAGE GALLERY</span>
+        </div>
+        <div class="drop-from-rect" *ngSwitchCase="'number'">
+          <span class="item1">123</span>
+          <br>
+          <span class="item2">NUMBER</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row contact-popup-container">
+      <div class="col-md-2 item1">
+        <i class="fas fa-info-circle fa-2x"></i>
+      </div>
+      <div class="col-md-10 item2">
+        <span>Missing something? </span>
+        <p>Contact us to let us know which element types you would like to use in your personas.</p>
+      </div>
+    </div>
+
+  </div>
